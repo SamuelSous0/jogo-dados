@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { View, Text, TouchableOpacity, StyleSheet } from "react-native";
+import { View, Text, TouchableOpacity, StyleSheet, SafeAreaView } from "react-native";
 import { Link } from "expo-router";
 import Dado from "../components/Dado";
 import { useGameStore } from "../zustand";
@@ -76,7 +76,8 @@ export default function JogoDados() {
   };
 
   return (
-    <View style={styles.container}>
+    <SafeAreaView style={styles.safeArea}>
+      <View style={styles.container}>
       
       <View style={styles.historicoContainer}>
         <Text style={styles.historicoTitle}>Histórico Geral (Persistido)</Text>
@@ -133,11 +134,16 @@ export default function JogoDados() {
           </TouchableOpacity>
         </View>
       )}
-    </View>
+      </View>
+    </SafeAreaView>
   );
 }
 
 const styles = StyleSheet.create({
+  safeArea: {
+    flex: 1,
+    backgroundColor: "#ffffff",
+  },
   container: {
     flex: 1,
     alignItems: "center",
@@ -179,7 +185,7 @@ const styles = StyleSheet.create({
   },
   playersContainer: {
     flexDirection: "row",
-    gap: 40,
+    gap: 15,
     marginBottom: 24,
   },
   playerSection: {
